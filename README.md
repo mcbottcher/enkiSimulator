@@ -25,3 +25,9 @@ change to the catkin_ws
 catkin_make
 ```
 and hopefully all works :)
+
+oh yeah, run with
+```
+rosrun enki_ros_pck robot
+```
+after sourcing the devel/setup.bash

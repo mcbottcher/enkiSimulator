@@ -6,7 +6,6 @@ find_package(catkin REQUIRED COMPONENTS
   roscpp
   rospy
   std_msgs
-  enki_service
 )
 
 catkin_package(

@@ -31,3 +31,5 @@ oh yeah, run with
 rosrun enki_ros_pck robot
 ```
 after sourcing the devel/setup.bash
+
+NOTE: you might have to empty the catkin_ws devel and build folders because there is some user specific cache stuff

@@ -79,11 +79,13 @@ int nInputs= ROW1N+ROW2N+ROW3N; //this cannot be an odd number for icoLearner
 class EnkiPlayground : public EnkiWidget
 {
 private:
+
+    //callback function for neural network output to set motor speeds
     void motors_callback(const geometry_msgs::Twist::ConstPtr& msg){
         //random mapping I have assigned
+        //need to find a way of doing this properly
         racer->leftSpeed = msg->angular.z;
         racer->rightSpeed = msg->angular.y;
-
     }
 
 protected:
@@ -97,14 +99,14 @@ protected:
     FILE* fcoord = NULL;
     FILE* fspeed = NULL;
 
+
+    //ros stuff
     ros::NodeHandle nh;
-    //ros::Publisher left_sensor_pub;
-    //ros::Publisher right_sensor_pub;
+    //publisher to output the 8 line sensor values
     ros::Publisher line_sensor_pub[8];
-
+    //publisher to output the 9x9 'front camera'
     ros::Publisher camera_pub;
-
-    //TODO add subscirber
+    //subscriber for the motor control messages
     ros::Subscriber sub;
 
 public:
@@ -112,6 +114,7 @@ public:
 		EnkiWidget(world, parent)
 	{
 
+        //N.B. all these use same topic names as gazebo
         line_sensor_pub[0] = nh.advertise<sensor_msgs::Image>("mybot/left_sensor4/image_raw",1);
         line_sensor_pub[1] = nh.advertise<sensor_msgs::Image>("mybot/left_sensor3/image_raw",1);
         line_sensor_pub[2] = nh.advertise<sensor_msgs::Image>("mybot/left_sensor2/image_raw",1);
@@ -123,8 +126,6 @@ public:
 
         camera_pub = nh.advertise<sensor_msgs::Image>("mybot/camera1/image_raw", 1);
 
-        //initialise subscriber
-        //write callback here somewhere...
         sub = nh.subscribe("mybot/cmd_vel", 1, &EnkiPlayground::motors_callback, this);
 
 #ifdef reflex
@@ -137,7 +138,7 @@ public:
 		racer->rightSpeed = 0;
         world->addObject(racer);
 
-        //set camera sensor pixels
+        //set camera sensor pixels -> 9x9 array of ground sensors infront of robot
         //args, y distance from centre of robot, number of sensor in row, spacing between sensors
         racer->setPreds(26, 9, 2);
         racer->setPreds(24, 9, 2);
@@ -147,7 +148,7 @@ public:
         racer->setPreds(16, 9, 2);
         racer->setPreds(14, 9, 2);
         racer->setPreds(12, 9, 2);
-        racer->setPreds(10, 9, 2); //10 is front of robot ...
+        racer->setPreds(10, 9, 2); //10 is front of robot, since robot is 20long and 10wide
 
     }
 
@@ -157,12 +158,13 @@ public:
         for(int i=0; i<8; i++){
             line_sensor_pub[i].shutdown();
         }
+        camera_pub.shutdown();
     }
 	// here we do all the behavioural computations
 	// as an example: line following and obstacle avoidance
 
 
-
+//this is called every 30Hz
 virtual void sceneCompletedHook()
 	{
         /*
@@ -173,6 +175,7 @@ virtual void sceneCompletedHook()
         double error = (leftGround - rightGround);
         */
 
+        //setup the ros message
         sensor_msgs::Image msg;
         msg.header.seq = countRuns;
         msg.header.frame_id = "camera_link";
@@ -198,8 +201,6 @@ virtual void sceneCompletedHook()
         msg.step = 9; //i think the step for one row?
 
         msg.data.pop_back();
-
-        //TODO change to flip around camera image...
         for(int i=0; i<9; i++){
             //do it row by row since rows are flipped for some weird reason
             for(int j=0; j<9; j++){
@@ -223,8 +224,6 @@ virtual void sceneCompletedHook()
         //racer->leftSpeed  = speed + error;
         //racer->rightSpeed = speed - error;
 #endif
-
-
 
         countSteps ++;
         if (countSteps == STEPSCOUNT){

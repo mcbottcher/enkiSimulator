@@ -35,7 +35,7 @@ MOVE          = mv -f
 TAR           = tar -cf
 COMPRESS      = gzip -9f
 DISTNAME      = enki1.0.0
-DISTDIR = /home/mcbottcher/Documents/enkiSimulator/enki/.tmp/enki1.0.0
+DISTDIR = /home/mcbottcher/Desktop/enkiSimulator/enki/.tmp/enki1.0.0
 AR            = ar cqs
 RANLIB        = 
 SED           = sed
@@ -166,6 +166,7 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/qt_config.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++/qmake.conf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/exclusive_builds.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/toolchain.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/default_pre.prf \
@@ -310,6 +311,7 @@ Makefile: enki.pro /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++/qmake.conf /u
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/qt_config.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++/qmake.conf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/exclusive_builds.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/toolchain.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/default_pre.prf \
@@ -405,6 +407,7 @@ Makefile: enki.pro /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++/qmake.conf /u
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/qt_config.prf:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++/qmake.conf:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_post.prf:
+.qmake.stash:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/exclusive_builds.prf:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/toolchain.prf:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/default_pre.prf:
@@ -512,7 +515,7 @@ moc_Enki.cpp: ../enki/Geometry.h \
 		Enki.h \
 		moc_predefs.h \
 		/usr/lib/qt5/bin/moc
-	/usr/lib/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/mcbottcher/Documents/enkiSimulator/enki -I/home/mcbottcher/Documents/enkiSimulator/enki/robots -I/home/mcbottcher/Documents/enkiSimulator/enki/robots/e-puck -I/home/mcbottcher/Documents/enkiSimulator/enki/robots/marxbot -I/home/mcbottcher/Documents/enkiSimulator/enki/interactions -I/home/mcbottcher/Documents/enkiSimulator/enki/objects -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtOpenGL -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include Enki.h -o moc_Enki.cpp
+	/usr/lib/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/mcbottcher/Desktop/enkiSimulator/enki -I/home/mcbottcher/Desktop/enkiSimulator/enki/robots -I/home/mcbottcher/Desktop/enkiSimulator/enki/robots/e-puck -I/home/mcbottcher/Desktop/enkiSimulator/enki/robots/marxbot -I/home/mcbottcher/Desktop/enkiSimulator/enki/interactions -I/home/mcbottcher/Desktop/enkiSimulator/enki/objects -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtOpenGL -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include Enki.h -o moc_Enki.cpp
 
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
@@ -725,25 +728,25 @@ moc_Enki.o: moc_Enki.cpp
 
 install_headersDataFiles: first FORCE
 	@test -d $(INSTALL_ROOT)/usr/local/include/enki || mkdir -p $(INSTALL_ROOT)/usr/local/include/enki
-	-$(QINSTALL) /home/mcbottcher/Documents/enkiSimulator/enki/BluetoothBase.h $(INSTALL_ROOT)/usr/local/include/enki/BluetoothBase.h
-	-$(QINSTALL) /home/mcbottcher/Documents/enkiSimulator/enki/Enki.h $(INSTALL_ROOT)/usr/local/include/enki/Enki.h
-	-$(QINSTALL) /home/mcbottcher/Documents/enkiSimulator/enki/Geometry.h $(INSTALL_ROOT)/usr/local/include/enki/Geometry.h
-	-$(QINSTALL) /home/mcbottcher/Documents/enkiSimulator/enki/Interaction.h $(INSTALL_ROOT)/usr/local/include/enki/Interaction.h
-	-$(QINSTALL) /home/mcbottcher/Documents/enkiSimulator/enki/moc_predefs.h $(INSTALL_ROOT)/usr/local/include/enki/moc_predefs.h
-	-$(QINSTALL) /home/mcbottcher/Documents/enkiSimulator/enki/PhysicalEngine.h $(INSTALL_ROOT)/usr/local/include/enki/PhysicalEngine.h
-	-$(QINSTALL) /home/mcbottcher/Documents/enkiSimulator/enki/Random.h $(INSTALL_ROOT)/usr/local/include/enki/Random.h
-	-$(QINSTALL) /home/mcbottcher/Documents/enkiSimulator/enki/Types.h $(INSTALL_ROOT)/usr/local/include/enki/Types.h
-	-$(QINSTALL) /home/mcbottcher/Documents/enkiSimulator/enki/robots/e-puck/EPuck.h $(INSTALL_ROOT)/usr/local/include/enki/EPuck.h
-	-$(QINSTALL) /home/mcbottcher/Documents/enkiSimulator/enki/robots/e-puck/EPuckModel.h $(INSTALL_ROOT)/usr/local/include/enki/EPuckModel.h
-	-$(QINSTALL) /home/mcbottcher/Documents/enkiSimulator/enki/robots/marxbot/Marxbot.h $(INSTALL_ROOT)/usr/local/include/enki/Marxbot.h
-	-$(QINSTALL) /home/mcbottcher/Documents/enkiSimulator/enki/robots/marxbot/MarxbotModel.h $(INSTALL_ROOT)/usr/local/include/enki/MarxbotModel.h
-	-$(QINSTALL) /home/mcbottcher/Documents/enkiSimulator/enki/robots/DifferentialWheeled.h $(INSTALL_ROOT)/usr/local/include/enki/DifferentialWheeled.h
-	-$(QINSTALL) /home/mcbottcher/Documents/enkiSimulator/enki/interactions/ActiveSoundSource.h $(INSTALL_ROOT)/usr/local/include/enki/ActiveSoundSource.h
-	-$(QINSTALL) /home/mcbottcher/Documents/enkiSimulator/enki/interactions/Bluetooth.h $(INSTALL_ROOT)/usr/local/include/enki/Bluetooth.h
-	-$(QINSTALL) /home/mcbottcher/Documents/enkiSimulator/enki/interactions/CircularCam.h $(INSTALL_ROOT)/usr/local/include/enki/CircularCam.h
-	-$(QINSTALL_PROGRAM) /home/mcbottcher/Documents/enkiSimulator/enki/interactions/GroundSensor.h $(INSTALL_ROOT)/usr/local/include/enki/GroundSensor.h
-	-$(QINSTALL) /home/mcbottcher/Documents/enkiSimulator/enki/interactions/IRSensor.h $(INSTALL_ROOT)/usr/local/include/enki/IRSensor.h
-	-$(QINSTALL) /home/mcbottcher/Documents/enkiSimulator/enki/interactions/Microphone.h $(INSTALL_ROOT)/usr/local/include/enki/Microphone.h
+	-$(QINSTALL) /home/mcbottcher/Desktop/enkiSimulator/enki/BluetoothBase.h $(INSTALL_ROOT)/usr/local/include/enki/BluetoothBase.h
+	-$(QINSTALL) /home/mcbottcher/Desktop/enkiSimulator/enki/Enki.h $(INSTALL_ROOT)/usr/local/include/enki/Enki.h
+	-$(QINSTALL) /home/mcbottcher/Desktop/enkiSimulator/enki/Geometry.h $(INSTALL_ROOT)/usr/local/include/enki/Geometry.h
+	-$(QINSTALL) /home/mcbottcher/Desktop/enkiSimulator/enki/Interaction.h $(INSTALL_ROOT)/usr/local/include/enki/Interaction.h
+	-$(QINSTALL) /home/mcbottcher/Desktop/enkiSimulator/enki/moc_predefs.h $(INSTALL_ROOT)/usr/local/include/enki/moc_predefs.h
+	-$(QINSTALL) /home/mcbottcher/Desktop/enkiSimulator/enki/PhysicalEngine.h $(INSTALL_ROOT)/usr/local/include/enki/PhysicalEngine.h
+	-$(QINSTALL) /home/mcbottcher/Desktop/enkiSimulator/enki/Random.h $(INSTALL_ROOT)/usr/local/include/enki/Random.h
+	-$(QINSTALL) /home/mcbottcher/Desktop/enkiSimulator/enki/Types.h $(INSTALL_ROOT)/usr/local/include/enki/Types.h
+	-$(QINSTALL) /home/mcbottcher/Desktop/enkiSimulator/enki/robots/e-puck/EPuck.h $(INSTALL_ROOT)/usr/local/include/enki/EPuck.h
+	-$(QINSTALL) /home/mcbottcher/Desktop/enkiSimulator/enki/robots/e-puck/EPuckModel.h $(INSTALL_ROOT)/usr/local/include/enki/EPuckModel.h
+	-$(QINSTALL) /home/mcbottcher/Desktop/enkiSimulator/enki/robots/marxbot/Marxbot.h $(INSTALL_ROOT)/usr/local/include/enki/Marxbot.h
+	-$(QINSTALL) /home/mcbottcher/Desktop/enkiSimulator/enki/robots/marxbot/MarxbotModel.h $(INSTALL_ROOT)/usr/local/include/enki/MarxbotModel.h
+	-$(QINSTALL) /home/mcbottcher/Desktop/enkiSimulator/enki/robots/DifferentialWheeled.h $(INSTALL_ROOT)/usr/local/include/enki/DifferentialWheeled.h
+	-$(QINSTALL) /home/mcbottcher/Desktop/enkiSimulator/enki/interactions/ActiveSoundSource.h $(INSTALL_ROOT)/usr/local/include/enki/ActiveSoundSource.h
+	-$(QINSTALL) /home/mcbottcher/Desktop/enkiSimulator/enki/interactions/Bluetooth.h $(INSTALL_ROOT)/usr/local/include/enki/Bluetooth.h
+	-$(QINSTALL) /home/mcbottcher/Desktop/enkiSimulator/enki/interactions/CircularCam.h $(INSTALL_ROOT)/usr/local/include/enki/CircularCam.h
+	-$(QINSTALL_PROGRAM) /home/mcbottcher/Desktop/enkiSimulator/enki/interactions/GroundSensor.h $(INSTALL_ROOT)/usr/local/include/enki/GroundSensor.h
+	-$(QINSTALL) /home/mcbottcher/Desktop/enkiSimulator/enki/interactions/IRSensor.h $(INSTALL_ROOT)/usr/local/include/enki/IRSensor.h
+	-$(QINSTALL) /home/mcbottcher/Desktop/enkiSimulator/enki/interactions/Microphone.h $(INSTALL_ROOT)/usr/local/include/enki/Microphone.h
 
 uninstall_headersDataFiles: FORCE
 	-$(DEL_FILE) -r $(INSTALL_ROOT)/usr/local/include/enki/Microphone.h
@@ -770,7 +773,7 @@ uninstall_headersDataFiles: FORCE
 
 install_libraryFiles: first FORCE
 	@test -d $(INSTALL_ROOT)/usr/local/lib || mkdir -p $(INSTALL_ROOT)/usr/local/lib
-	-$(QINSTALL_PROGRAM) /home/mcbottcher/Documents/enkiSimulator/enki/libenki.a $(INSTALL_ROOT)/usr/local/lib/libenki.a
+	-$(QINSTALL_PROGRAM) /home/mcbottcher/Desktop/enkiSimulator/enki/libenki.a $(INSTALL_ROOT)/usr/local/lib/libenki.a
 
 uninstall_libraryFiles: FORCE
 	-$(DEL_FILE) -r $(INSTALL_ROOT)/usr/local/lib/libenki.a

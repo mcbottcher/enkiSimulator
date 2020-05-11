@@ -32,8 +32,9 @@ find_package(Qt5 COMPONENTS OpenGL REQUIRED)
 
 set(SOURCES run.cpp Racer.cpp bandpass.cpp)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../../../../../enki)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../../../../../)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../../../)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
-include_directories(~/enkiSimulator)
 
 add_executable(robot ${SOURCES})
 target_link_libraries(robot ${catkin_LIBRARIES} ${enki_LIBRARY} Qt5::OpenGL Qt5::Widgets GL)

@@ -84,8 +84,19 @@ private:
     void motors_callback(const geometry_msgs::Twist::ConstPtr& msg){
         //random mapping I have assigned
         //need to find a way of doing this properly
-        racer->leftSpeed = msg->angular.z;
-        racer->rightSpeed = msg->angular.y;
+        //racer->leftSpeed = msg->angular.z;
+        //racer->rightSpeed = msg->angular.y;
+
+        double angular_speed = msg->angular.z;
+
+        //both will be 30 speed //used to multiply by 18
+        racer->leftSpeed = (angular_speed*50.0) + 30.0;
+        racer->rightSpeed = (angular_speed*(-50.0)) + 30.0;
+        /**********************
+         * 
+         * MIGHT NEED TO CHANGE MULTIPLICATION HERE DEPENDING ON NEURAL NET OUTPUT VALUE....
+         * 
+         * **********************/
     }
 
 protected:

@@ -6,38 +6,22 @@ a fast 2D robot simulator using the QT5 build system.
 
 © 2017 Bernd Porr <mail@berndporr.me.uk>
 
+
 ## License
 
 [GPL 2.0](LICENSE).
 
-## Prerequisites
+# Build
 
-You need the QT5 library and its development packages to compile it.
+first change into the enki folder
 
-
-## Enki simulator compilation under Unix (library)
-
-Change into the enki subdirectory and type:
-
-	qmake
-
-and then build Enki by running:
-
-	make
-
-and finally install the library with
-	
-	sudo make install
-
-
-## Compiling/running the examples
-
-To compile the examples you need to do again `qmake` and `make`. This uses the
-previously compiled enki library.
-
-To run it type, for example, `./playground`
-
-## Citation
-
-[![DOI](https://zenodo.org/badge/234632641.svg)](https://zenodo.org/badge/latestdoi/234632641)
-
+```
+qmake
+make
+```
+then go to examples and the ros directory
+change to the catkin_ws
+```
+catkin_make
+```
+and hopefully all works :)

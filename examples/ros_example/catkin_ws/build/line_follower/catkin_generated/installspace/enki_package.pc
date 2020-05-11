@@ -1,0 +1,8 @@
+prefix=/home/mcbottcher/Documents/enkiSimulator/examples/ros_example/catkin_ws/install
+
+Name: enki_package
+Description: Description of enki_package
+Version: 1.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

@@ -41,3 +41,5 @@ and run with
 ```
 rosrun enki_ros_pck robot
 ```
+
+The robot will not move, but it can be tested using the line following package given by [AI-Line-Follower](https://github.com/a2198699s/AI-Line-Follower/tree/master/ros_packages) 
